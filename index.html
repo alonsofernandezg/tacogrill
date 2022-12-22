@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js" crossorigin></script>
+<title>Encuesta Recomendacion</title>
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+
+<style>
+#cf-context {     
+  width: 100vw; 
+  height: 85vh; 
+} 
+#form {
+  height: 0px;
+  overflow: hidden;
+  color: black;
+}
+ </style>
+</head>
+<body>
+
+  <header class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+    
+    <p>Taco Grill 🌮</p>
+    
+    
+  </header>  
+  
+
+
+    <datalist id="browsers">
+        <option value="1">
+        <option value="2">
+        <option value="3">
+        <option value="4">
+        <option value="5">
+        <option value="6">
+        <option value="7">
+        <option value="8">
+        <option value="9">
+        <option value="10">
+      </datalist>
+    
+      <form id="form" cf-form>
+        <cf-robot-message cf-questions="Hola 😊"></cf-robot-message>
+        
+        <cf-robot-message cf-questions="Nos gustaria conocer su opinión con respecto a su última visita a Taco Grill 🌮"></cf-robot-message>
+        
+        <input type="text" name="browsers" list="browsers" cf-questions="En una escala de 0 a 10, ¿qué probabilidad hay de que recomiende nuestra empresa a un amigo o colega?"
+        cf-input-placeholder="Escoja su respuesta" cf-error="Por favor escoja un valor" required/>
+        
+        <textarea name="testmultirows2" rows="3" cf-questions="¿Nos daria la razón principal por la cual nos dio un {previous-answer} como puntuación?" cf-input-placeholder="Escriba su respuesta" 
+        cf-error="Por favor no deje el espacio en blanco, es muy importante para nosotros" required></textarea>
+
+      
+      </form>
+      <div id="cf-context" role="cf-context" cf-context></div>
+
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+
+  <p class="w3-medium">Powered by <a href="" target="_blank">CXLab</a></p>
+</footer>
+    
+    <script>
+
+        window.onload = function() {
+          var conversationalForm = window.cf.ConversationalForm.startTheConversation({
+            
+                formEl: document.getElementById("form"),
+                context: document.getElementById("cf-context"),
+                theme: 'dark',
+                userImage:'text:U',
+                robotImage: '.images/favicon-16x16.png',
+                submitCallback: function(){
+             conversationalForm.addRobotChatResponse("Eso es todo, gracias por ayudarnos a mejorar."); 
+             var formData = conversationalForm.getFormData();
+                    var formDataSerialized = conversationalForm.getFormData(true);
+                    console.log("Formdata:", formData);
+                    console.log("Formdata, serialized:", formDataSerialized);
+            }
+          });
+        };
+        </script>
+
+
+
+</body>
+
+
+</html>
